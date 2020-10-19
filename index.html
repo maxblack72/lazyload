@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Lazy Load</title>
+    </head>
+
+    <body>
+        <img alt="This image is lazy" src="cat.jpg" width="300" loading="lazy"/>
+    </body>
+    <script>
+    // Lazyload animation
+    if (!isIE()){
+        const lazyImages = document.querySelectorAll('[loading="lazy"]');
+        for (let image of lazyImages) {
+            if (!image.complete){
+                image.addEventListener("load", fadeImg);
+                image.style.opacity = "0";
+            } else {
+                image.style.opacity = "1";
+            }
+        }
+    }
+    
+    function fadeImg () {
+        this.style.transition = "opacity 1.5s ease .3s";
+        this.style.opacity = "1";
+    }
+    
+    function isIE() {
+        // IE 10 and IE 11
+        return /Trident\/|MSIE/.test(window.navigator.userAgent);
+    }
+    </script>
+</html>

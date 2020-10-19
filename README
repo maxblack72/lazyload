@@ -1,0 +1,3 @@
+*** Lazyload ***
+
+On a local environment Chrome loads always images without cache. To properly test, run under a web server.
